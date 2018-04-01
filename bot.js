@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const pluralinfo = require("./principalDatabase.json");
 
 client.on('ready', () => {
     console.log('I am ready!');
@@ -8,31 +7,9 @@ client.on('ready', () => {
 
 const autorole = require("./autoroles.json");
 client.on('message', message => {
-    let archat = autorole.roles.filter(er => er.chat == message.channel.id);
-    if (archat.length == 1){
-        if(Math.round(Math.random()*parseInt(archat[0].chance)) == 0){
-            switch(archat[0].tipo) {
-                case "msg":
-                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
-                    break;
-                case "Smsg":
-                    if(message.content.indexOf(archat[0].data) > -1){
-                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
-                    }
-                    break;
-                case "pic":
-                    if(message.attachments.size > 0){
-                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
-                    }
-                    break;
-            }
-        }
-    } else if (archat.length > 1){
-        let errcoiciden = "**Error, se ha usado 2 veces la id del chat " + message.channel.name  + " en el autorole:**\n";
-        archat.forEach(function(responsable) {
-            errcoiciden += responsable.name + "\n";
-        });
-        message.guild.channels.get(autorole.logchat).send(errcoiciden);
+    if(message.channel.id == 429629491598589983){
+        message.guild.channels.get("429650257723392011").sendMessage('**Petición de ' + message.author.name +'('+message.author.id+') \n'+ message.content);
+        message.delete();
     }
 });
 /*
