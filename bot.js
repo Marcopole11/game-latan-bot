@@ -5,6 +5,36 @@ const pluralinfo = require("./principalDatabase.json");
 client.on('ready', () => {
     console.log('I am ready!');
 });
+
+const autorole = require("./autoroles.json");
+client.on('message', message => {
+    let archat = autorole.roles.filter(er => er.chat == message.channel.id);
+    if (archat.length == 1){
+        if(Math.round(Math.random()*parseInt(archat[0].chance)) == 0){
+            switch(archat[0].tipo) {
+                case "msg":
+                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
+                    break;
+                case "Smsg":
+                    if(message.content.indexOf(archat[0].data) > -1){
+                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
+                    }
+                    break;
+                case "pic":
+                    if(message.attachments.size > 0){
+                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
+                    }
+                    break;
+            }
+        }
+    } else if (archat.length > 1){
+        let errcoiciden = "**Error, se ha usado 2 veces la id del chat " + message.channel.name  + " en el autorole:**\n";
+        archat.forEach(function(responsable) {
+            errcoiciden += responsable.name + "\n";
+        });
+        message.guild.channels.get(autorole.logchat).send(errcoiciden);
+    }
+});
 /*
 var prefix = 'mL+';
 var comandchat = "comandos"; var dialogchat = "canal-r37j";
@@ -93,25 +123,6 @@ client.on('message', message => { //solo en chat de comandos
 client.on("guildMemberAdd", (member) => {
     member.addRole(member.guild.roles.find("name", "newbye"), "Por seguridad");
     member.addRole(member.guild.roles.find("name", "ad"), "Recien llegado");
-});
-client.on('messageUpdate', (omsg, nmsg) =>  {
-    let rprt = "__Mensaje editado__ por _" + nmsg.author.username + "_ en " + nmsg.channel + " \n**``" + omsg.content + "``**\n\n**``" + nmsg.content + "``**";
-    if(nmsg.author.username == "Howl"){
-        let entrada = nmsg.content.split(" ");
-        if(entrada[1] == ":gun:" && entrada[2] == ":skull:¡Has" && entrada[3] == "muerto!:skull:,"){
-              //omsg.guild.channels.find("name", "log").sendMessage(entrada[0].joinedTimestamp);omsg.
-              //guild.channels.find("name", "log").sendMessage(omsg.guild.members.get(entrada[0].slice(2, -1)));
-            omsg.guild.members.get(entrada[0].slice(2, -1)).addRole(omsg.guild.roles.find("name", "Undead"), "comando");
-            omsg.guild.channels.find("name", "log").sendMessage(omsg.guild.members.get(entrada[0].slice(2, -1)).user.username + " ha perdido la vida jugando a la ruleta");
-            omsg.guild.members.get(entrada[0].slice(2, -1)).removeRole(omsg.guild.roles.find("name", "Alive!"), "murió jugando a la ruleta");
-        } /*else if(entrada[0] == "Felicitaciones," && entrada[2] == "pescaste:"){
-            omsg.guild.channels.find("name", "log").sendMessage("ha pescado");
-        }*/ else if (Math.random() < 0.11) {
-            omsg.guild.channels.find("name", "log").sendMessage("Howl sempai!!!");
-        }
-    } else {
-        omsg.guild.channels.find("name", "log").sendMessage(rprt);
-    }
 });
 client.on("messageDelete", message => {
     let rprt = "__Mensaje eliminado__ de _" + message.author.username + "_ en " + message.channel + " \n**``" + message.content + "``**";
