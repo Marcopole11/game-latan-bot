@@ -34,6 +34,8 @@ client.on("messageDelete", message => {
     if (archat.length < 1){
         let rprt = "__Mensaje eliminado__ de _" + message.author.username + "_ en " + message.channel + " \n**``" + message.content + "``**";
         message.guild.channels.find("name", "log").sendMessage(rprt);
+    } else {
+        message.channel.sendMessage(archat[0] + archat.length);
     }
 });
 client.on('voiceStateUpdate', (oldMember, newMember) => {
