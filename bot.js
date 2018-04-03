@@ -31,7 +31,10 @@ client.on('message', message => {
         } else {
             message.author.dmChannel.send('This is fake!')
                 .then(message => console.log(`Sent message: ${message.content}`))
-                .catch(console.error);
+                .catch(er => {
+                    message.member.removeRole(message.guild.roles.find("name", "no miembro"), "Por seguridad");
+                    message.member.addRole(message.guild.roles.find("name", autorole.memes.rango), "Bienvenido");
+                });
         }
         message.delete();
     }
