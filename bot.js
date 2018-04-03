@@ -31,11 +31,11 @@ client.on("guildMemberAdd", (member) => {
 });
 client.on("messageDelete", message => {
     let check = 0;
-    autorole.delUnlog.forEach(chi => {
-        if(message.channel.id == chi){
+    for(i = 0; i < autorole.delUnlog.length; i++){
+        if(message.channel.id == autorole.delUnlog[i]){
             check = 1;
         }
-    });
+    }
     if(check == 0){
         let rprt = "__Mensaje eliminado__ de _" + message.author.username + "_ en " + message.channel + " \n**``" + message.content + "``**";
         message.guild.channels.find("name", "log").sendMessage(rprt);
