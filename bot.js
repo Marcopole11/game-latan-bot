@@ -30,12 +30,15 @@ client.on("guildMemberAdd", (member) => {
     member.addRole(member.guild.roles.find("name", "no miembro"), "Por seguridad");
 });
 client.on("messageDelete", message => {
-    let archat = autorole.delUnlog(er => er == message.channel.id);
-    if (archat.length < 1){
+    let check = 0;
+    autorole.delUnlog.forEach(chi => {
+        if(message.channel.id == chi){
+            check = 1;
+        }
+    });
+    if(check == 0){
         let rprt = "__Mensaje eliminado__ de _" + message.author.username + "_ en " + message.channel + " \n**``" + message.content + "``**";
         message.guild.channels.find("name", "log").sendMessage(rprt);
-    } else {
-        message.channel.sendMessage(archat[0] + archat.length);
     }
 });
 client.on('voiceStateUpdate', (oldMember, newMember) => {
