@@ -14,6 +14,15 @@ client.on('message', message => {
                 + message.author.tag + ' ' + message.author.id +') \n'+
             message.content);
         message.delete();
+    } else if(message.channel.id == 4296249996834242613){
+        if (message.content.startsWith(prefix + 'ping')) {
+            message.channel.sendMessage('Its over 999!!!!');
+        }
+    } else if(message.channel.id == 4296249996834242613){
+        if (message.content.startsWith('nueva')) {
+            message.channel.sendMessage('creada DB');
+            message.delete();
+        }
     }
 });
 
@@ -21,8 +30,11 @@ client.on("guildMemberAdd", (member) => {
     member.addRole(member.guild.roles.find("name", "no miembro"), "Por seguridad");
 });
 client.on("messageDelete", message => {
-    let rprt = "__Mensaje eliminado__ de _" + message.author.username + "_ en " + message.channel + " \n**``" + message.content + "``**";
-    message.guild.channels.find("name", "log").sendMessage(rprt);
+    let archat = autorole.delUnlog(er => er == message.channel.id);
+    if (archat.length < 1){
+        let rprt = "__Mensaje eliminado__ de _" + message.author.username + "_ en " + message.channel + " \n**``" + message.content + "``**";
+        message.guild.channels.find("name", "log").sendMessage(rprt);
+    }
 });
 client.on('voiceStateUpdate', (oldMember, newMember) => {
     let newUserChannel = newMember.voiceChannel;
