@@ -23,6 +23,9 @@ client.on('message', message => {
             message.channel.sendMessage('creada DB');
             message.delete();
         }
+    } else if(message.channel.id == 429649915174453250){
+        message.author.dmChannel.send('This is fake!');
+        message.delete();
     }
 });
 
@@ -51,13 +54,6 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
         newMember.removeRole(newMember.guild.roles.find("name", "🔊"));
         newMember.guild.channels.find("name", "log").sendMessage(newMember.user.username + " salió de los chats de voz");
     }
-});
-client.on("messageReactionAdd", (reactionado, reacter) => {
-    reactionado.message.channel.send(reacter);
-    /*
-    if(reactionado.message.channel.id == 429655030040363018){
-        reacter.dmChannel.send('This is fake!');
-    }*/
 });
 
 //This is da wae
