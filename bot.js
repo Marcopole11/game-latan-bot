@@ -17,6 +17,8 @@ client.on('message', message => {
     } else if(message.channel.id == 429624999683424261){
         if (message.content.startsWith(prefix + 'ping')) {
             message.channel.sendMessage('Its over 999!!!!');
+        } else if (message.content.startsWith(prefix + 'testjson')){
+            message.channel.send(autorole.memes.chats[0]);
         }
     } else if(message.channel.id == 429649915174453250){
         if (message.content.startsWith('nueva')) {
@@ -46,6 +48,8 @@ client.on('message', message => {
                 });
         }
         message.delete();
+    } else {
+        
     }
 });
 
