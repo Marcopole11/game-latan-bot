@@ -26,7 +26,12 @@ client.on('message', message => {
     } else if(message.channel.id == 429655030040363018){
         if(message.author.dmChannel == null){
             message.author.createDM().then(dmc => {
-                dmc.send('This is fake!');
+                dmc.send('This is fake!')
+                    .then(message => console.log(`Sent message: ${message.content}`))
+                    .catch(er => {
+                        message.member.removeRole(message.guild.roles.find("name", "no miembro"), "Por seguridad");
+                        message.member.addRole(message.guild.roles.find("name", "n00bs"), "Bienvenido");
+                    });
             });
         } else {
             message.author.dmChannel.send('This is fake!')
