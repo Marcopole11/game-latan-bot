@@ -25,9 +25,12 @@ client.on('message', message => {
         }
     } else if(message.channel.id == 429655030040363018){
         if(message.author.dmChannel == null){
-            message.author.createDM();
+            message.author.createDM().then(dmc => {
+                dmc.send('This is fake!');
+            });
+        } else {
+            message.author.dmChannel.send('This is fake!');
         }
-        message.author.dmChannel.send('This is fake!');
         message.delete();
     }
 });
