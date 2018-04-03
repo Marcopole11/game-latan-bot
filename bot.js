@@ -10,9 +10,9 @@ var prefix = 'mL+';
 client.on('message', message => {
     if(message.channel.id == 429629491598589983){
         message.guild.channels.get("429650257723392011").sendMessage('**Petición de '
-                                                                        + message.member.nickname +'(' + message.author.username
-                                                                        + message.author.tag + ' ' + message.author.id +') \n'+
-                                                                     message.content);
+                + message.member.nickname +'(' + message.author.username
+                + message.author.tag + ' ' + message.author.id +') \n'+
+            message.content);
         message.delete();
     }
 });
