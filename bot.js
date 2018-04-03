@@ -24,7 +24,8 @@ client.on('message', message => {
             message.delete();
         }
     } else if(message.channel.id == 429655030040363018){
-        message.author.dmChannel.send('This is fake!');
+        console.log(message.author.dmChannel);
+        //message.author.dmChannel.send('This is fake!');
         message.delete();
     }
 });
