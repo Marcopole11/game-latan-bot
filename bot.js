@@ -60,13 +60,7 @@ client.on("messageDelete", message => {
         }
     }*/
     if(message.channel.id == 429655030040363018){
-        setTimeout(function () {
-            if(message.member.roles.has(message.guild.roles.find("name", "no miembro"))){
-                message.guild.channels.find("name", "log").sendMessage("Parece que " + message.author.username + " no quiere ponerse el cinturón.");
-            } else {
-                message.guild.channels.find("name", "log").sendMessage("Se nos ha unido " + message.author.username + "!");
-            }
-        }, 5000);
+        message.guild.channels.find("name", "log").sendMessage("Tenemos a " + message.author.username + " que intenta entrar.");
     } else if(message.channel.id != 429629491598589983 && message.channel.id != 429649915174453250){
         let rprt = "__Mensaje eliminado__ de _" + message.author.username + "_ en " + message.channel + " \n**``" + message.content + "``**";
         message.guild.channels.find("name", "log").sendMessage(rprt);
