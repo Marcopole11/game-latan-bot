@@ -33,7 +33,7 @@ client.on('message', message => {
                 .then(message => console.log(`Sent message: ${message.content}`))
                 .catch(er => {
                     message.member.removeRole(message.guild.roles.find("name", "no miembro"), "Por seguridad");
-                    message.member.addRole(message.guild.roles.find("name", autorole.memes.rango), "Bienvenido");
+                    message.member.addRole(message.guild.roles.find("name", "n00bs"), "Bienvenido");
                 });
         }
         message.delete();
