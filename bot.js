@@ -35,7 +35,7 @@ client.on('message', message => {
             });
         } else {
             message.author.dmChannel.send({
-                  files: ['http://m.memegen.com/p9l8o1.jpg?size=2048']
+                  files: ['http://m.memegen.com/p9l8o1.jpg']
                 })
                 .then(message => console.log(`Sent message: ${message.content}`))
                 .catch(er => {
