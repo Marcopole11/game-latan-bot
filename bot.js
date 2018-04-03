@@ -32,3 +32,6 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
         newMember.guild.channels.find("name", "log").sendMessage(newMember.user.username + "salió de los chats de voz");
     }
 });
+
+//This is da wae
+client.login(process.env.BOT_TOKEN);
