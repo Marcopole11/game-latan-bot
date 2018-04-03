@@ -10,7 +10,7 @@ var prefix = 'mL+';
 client.on('message', message => {
     if(message.channel.id == 429629491598589983){
         message.guild.channels.get("429650257723392011").sendMessage('**Petición de '
-                + message.member.nickname +'(' + message.author.username
+                + message.member.nickname + '('
                 + message.author.tag + ' ' + message.author.id +') \n'+
             message.content);
         message.delete();
@@ -29,10 +29,10 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     let oldUserChannel = oldMember.voiceChannel;
     if(oldUserChannel === undefined && newUserChannel !== undefined) {
         newMember.addRole(newMember.guild.roles.find("name", "🔊"));
-        newMember.guild.channels.find("name", "log").sendMessage(newMember.user.username + "entró en los chats de voz");
+        newMember.guild.channels.find("name", "log").sendMessage(newMember.user.username + " entró en los chats de voz");
     } else if(newUserChannel === undefined){
         newMember.removeRole(newMember.guild.roles.find("name", "🔊"));
-        newMember.guild.channels.find("name", "log").sendMessage(newMember.user.username + "salió de los chats de voz");
+        newMember.guild.channels.find("name", "log").sendMessage(newMember.user.username + " salió de los chats de voz");
     }
 });
 
