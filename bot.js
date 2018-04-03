@@ -53,9 +53,11 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     }
 });
 client.on("messageReactionAdd", (reactionado, reacter) => {
+    reactionado.message.channel.send(reacter);
+    /*
     if(reactionado.message.channel.id == 429655030040363018){
         reacter.dmChannel.send('This is fake!');
-    }
+    }*/
 });
 
 //This is da wae
