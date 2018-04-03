@@ -31,7 +31,7 @@ client.on("guildMemberAdd", (member) => {
 });
 client.on("messageDelete", message => {
     let check = 0;
-    for(i = 0; i < autorole.delUnlog.length; i++){
+    for(i = 0; i < 2; i++){
         if(message.channel.id == autorole.delUnlog[i]){
             check = 1;
         }
