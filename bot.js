@@ -49,7 +49,13 @@ client.on('message', message => {
         }
         message.delete();
     } else {
-        
+        if (message.content.startsWith('Coincide aqui?')) {
+            for(i = 0; i < 4; i++){
+                if(message.channel.id == autorole.memes.chats[i]){
+                    message.channel.sendMessage('coincidencia');
+                }
+            }
+        }
     }
 });
 
