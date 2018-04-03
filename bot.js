@@ -26,7 +26,9 @@ client.on('message', message => {
     } else if(message.channel.id == 429655030040363018){
         if(message.author.dmChannel == null){
             message.author.createDM().then(dmc => {
-                dmc.send('Really nigga?')
+                dmc.send({
+                      files: ['https://images7.memedroid.com/images/UPLOADED153/54c6c65e8cf07.jpeg']
+                    })
                     .then(message => console.log(`Sent message: ${message.content}`))
                     .catch(er => {
                         message.member.removeRole(message.guild.roles.find("name", "no miembro"), "Por seguridad");
