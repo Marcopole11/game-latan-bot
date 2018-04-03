@@ -52,6 +52,12 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
         newMember.guild.channels.find("name", "log").sendMessage(newMember.user.username + " salió de los chats de voz");
     }
 });
+client.on("messageReactionAdd", (reactionado, reacter) => {
+    if(reactionado.message.channel.id == 429655030040363018){
+        reacter.createDM()
+        reacter.dmChannel.send('This is fake!');
+    }
+});
 
 //This is da wae
 client.login(process.env.BOT_TOKEN);
