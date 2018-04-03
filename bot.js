@@ -14,11 +14,11 @@ client.on('message', message => {
                 + message.author.tag + ' ' + message.author.id +') \n'+
             message.content);
         message.delete();
-    } else if(message.channel.id == 4296249996834242613){
+    } else if(message.channel.id == 429624999683424261){
         if (message.content.startsWith(prefix + 'ping')) {
             message.channel.sendMessage('Its over 999!!!!');
         }
-    } else if(message.channel.id == 4296249996834242613){
+    } else if(message.channel.id == 429649915174453250){
         if (message.content.startsWith('nueva')) {
             message.channel.sendMessage('creada DB');
             message.delete();
