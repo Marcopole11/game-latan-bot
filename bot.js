@@ -29,7 +29,9 @@ client.on('message', message => {
                 dmc.send('This is fake!');
             });
         } else {
-            message.author.dmChannel.send('This is fake!');
+            message.author.dmChannel.send('This is fake!')
+                .then(message => console.log(`Sent message: ${message.content}`))
+                .catch(console.error);
         }
         message.delete();
     }
