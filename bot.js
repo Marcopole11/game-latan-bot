@@ -23,7 +23,7 @@ client.on('message', message => {
             message.channel.sendMessage('creada DB');
             message.delete();
         }
-    } else if(message.channel.id == 429649915174453250){
+    } else if(message.channel.id == 429655030040363018){
         message.author.dmChannel.send('This is fake!');
         message.delete();
     }
