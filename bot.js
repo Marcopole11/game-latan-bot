@@ -53,6 +53,8 @@ client.on('message', message => {
             for(i = 0; i < 4; i++){
                 if(message.channel.id == autorole.memes.chats[i]){
                     message.channel.sendMessage('coincidencia');
+                } else {
+                    console.log(autorole.memes.chats[i]);
                 }
             }
         }
