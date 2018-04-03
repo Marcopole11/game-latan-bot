@@ -30,13 +30,13 @@ client.on("guildMemberAdd", (member) => {
     member.addRole(member.guild.roles.find("name", "no miembro"), "Por seguridad");
 });
 client.on("messageDelete", message => {
-    let check = 0;
+    /*let check = 0;
     for(i = 0; i < 2; i++){
         if(message.channel.id == autorole.delUnlog[i]){
             check = 1;
         }
-    }
-    if(check == 0){
+    }*/
+    if(message.channel.id == 429629491598589983 || message.channel.id == 429649915174453250){
         let rprt = "__Mensaje eliminado__ de _" + message.author.username + "_ en " + message.channel + " \n**``" + message.content + "``**";
         message.guild.channels.find("name", "log").sendMessage(rprt);
     }
