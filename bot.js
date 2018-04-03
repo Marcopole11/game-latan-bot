@@ -51,7 +51,7 @@ client.on('message', message => {
     } else {
         if (message.content.startsWith('Coincide aqui?')) {
             console.log("hasta aqui funciono");
-            essage.channel.sendMessage('sabes usar consola?');
+            message.channel.sendMessage('sabes usar consola?');
             for(i = 0; i < 4; i++){
                 if(message.channel.id == autorole.memes.chats[i]){
                     message.channel.sendMessage('coincidencia');
