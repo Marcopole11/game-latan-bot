@@ -54,7 +54,7 @@ client.on('message', message => {
             message.channel.sendMessage('sabes usar consola?');
             for(i = 0; i < 4; i++){
                 if(message.channel.id == autorole.memes.chats[i]){
-                    for(j = 0; j < 4; j++){
+                    for(j = 0; j < autorole.memes.rango.length; j++){
                         if(message.member.roles.exists('name', autorole.memes.rango[j])){
                             message.channel.sendMessage('Eres de lv ' + j);
                         }
