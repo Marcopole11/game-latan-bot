@@ -51,12 +51,14 @@ client.on('message', message => {
     } else {
         if (message.content.startsWith('Coincide aqui?')) {
             console.log("hasta aqui funciono");
-            message.channel.sendMessage('sabes usar consola?');
             for(i = 0; i < 4; i++){
                 if(message.channel.id == autorole.memes.chats[i]){
-                    for(j = 0; j < autorole.memes.rango.length; j++){
-                        if(message.member.roles.exists('name', autorole.memes.rango[j])){
-                            message.channel.sendMessage('Eres de lv ' + j);
+                    let staleveando = 0;
+                    for(j = 1; j < autorole.memes.rango.length; j++){
+                        if(message.member.roles.exists('name', autorole.memes.rango[j-1]) && staleveando == 0){
+                            message.member.removeRole(message.guild.roles.find("name", autorole.memes.rango[j-1]), "Sube de nivel");
+                            message.member.addRole(message.guild.roles.find("name", autorole.memes.rango[j]), "Nuevo nivel");
+                            message.channel.sendMessage('Ahora eres de lv ' + j);
                         }
                     }
                 } else {
