@@ -49,21 +49,23 @@ client.on('message', message => {
         }
         message.delete();
     } else {
-        if (message.content.startsWith('Coincide aqui?')) {
-            console.log("hasta aqui funciono");
-            for(i = 0; i < 4; i++){
-                if(message.channel.id == autorole.memes.chats[i]){
-                    let staleveando = 0;
-                    for(j = 1; j < autorole.memes.rango.length; j++){
-                        if(message.member.roles.exists('name', autorole.memes.rango[j-1]) && staleveando == 0){
-                            message.member.removeRole(message.guild.roles.find("name", autorole.memes.rango[j-1]), "Sube de nivel");
-                            message.member.addRole(message.guild.roles.find("name", autorole.memes.rango[j]), "Nuevo nivel");
-                            message.channel.sendMessage('Ahora eres de lv ' + j);
+        if (message.content.startsWith('Coincide aqui?') && message.attachments.size > 0) {
+            switch(Math.round(Math.random() * 12)) {
+                case 1:
+                    console.log("hasta aqui funciono");
+                    for(i = 0; i < 4; i++){
+                        if(message.channel.id == autorole.memes.chats[i]){
+                            let staleveando = 0;
+                            for(j = 1; j < autorole.memes.rango.length; j++){
+                                if(message.member.roles.exists('name', autorole.memes.rango[j-1]) && staleveando == 0){
+                                    message.member.removeRole(message.guild.roles.find("name", autorole.memes.rango[j-1]), "Sube de nivel");
+                                    message.member.addRole(message.guild.roles.find("name", autorole.memes.rango[j]), "Nuevo nivel");
+                                    message.channel.sendMessage('Ahora eres de lv ' + j);
+                                }
+                            }
                         }
                     }
-                } else {
-                    console.log(autorole.memes.chats[i]);
-                }
+                break;
             }
         }
     }
