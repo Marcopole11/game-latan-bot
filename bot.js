@@ -49,19 +49,26 @@ client.on('message', message => {
         }
         message.delete();
     } else {
-        if (message.content.startsWith('Coincide aqui?') && message.attachments.size > 0) {
-            switch(Math.round(Math.random() * 12)) {
+        let d = new Date();
+        if (message.attachments.size > 0) {
+            switch(Math.round(Math.random() * autorole.memes.chance)) {
                 case 1:
                     for(i = 0; i < 4; i++){
                         if(message.channel.id == autorole.memes.chats[i]){
-                            let staleveando = 0;
-                            for(j = 1; j < autorole.memes.rango.length; j++){
-                                if(message.member.roles.exists('name', autorole.memes.rango[j-1]) && staleveando == 0){
-                                    message.member.removeRole(message.guild.roles.find("name", autorole.memes.rango[j-1]), "Sube de nivel");
-                                    message.member.addRole(message.guild.roles.find("name", autorole.memes.rango[j]), "Nuevo nivel");
-                                    message.channel.sendMessage('Ahora eres de lv ' + j);
+                            message.guild.channels.get(autorole.dbchat).fetchMessage(autorole.memes.timestamp).then(m => {
+                                m.edit(message.content.slice(entrada[0].length));
+                                if(d.getHours() != m.content.split(" ")[0]){
+                                    m.edit(d.getHours() + " let");
+                                    let staleveando = 0;
+                                    for(j = 1; j < autorole.memes.rango.length; j++){
+                                        if(message.member.roles.exists('name', autorole.memes.rango[j-1]) && staleveando == 0){
+                                            message.member.removeRole(message.guild.roles.find("name", autorole.memes.rango[j-1]), "Sube de nivel");
+                                            message.member.addRole(message.guild.roles.find("name", autorole.memes.rango[j]), "Nuevo nivel");
+                                            message.channel.sendMessage('Ahora eres de lv ' + j);
+                                        }
+                                    }
                                 }
-                            }
+                            });
                         }
                     }
                 break;
