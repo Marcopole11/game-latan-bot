@@ -52,7 +52,6 @@ client.on('message', message => {
         if (message.content.startsWith('Coincide aqui?') && message.attachments.size > 0) {
             switch(Math.round(Math.random() * 12)) {
                 case 1:
-                    console.log("hasta aqui funciono");
                     for(i = 0; i < 4; i++){
                         if(message.channel.id == autorole.memes.chats[i]){
                             let staleveando = 0;
@@ -66,6 +65,8 @@ client.on('message', message => {
                         }
                     }
                 break;
+                default:
+                console.log("hasta aqui funciono");
             }
         }
     }
