@@ -56,7 +56,8 @@ client.on('message', message => {
                 if(message.channel.id == autorole.memes.chats[i]){
                     for(j = 0; j < 4; j++){
                         if(message.member.roles.exists('name', autorole.memes.rango[j])){
-                        message.channel.sendMessage('Eres de lv ' + j);
+                            message.channel.sendMessage('Eres de lv ' + j);
+                        }
                     }
                 } else {
                     console.log(autorole.memes.chats[i]);
