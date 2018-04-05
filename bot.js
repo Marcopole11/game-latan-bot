@@ -66,12 +66,11 @@ client.on('message', message => {
                                 });
                         }
                     } else if(entrada[1].slice(0,2) == "<#"){
-                        addon += entrada[1].length +1;
                         if (!message.guild.channels.has(entrada[1].slice(2,-1))){
                             message.channel.sendMessage("Si quieres que escriba en otro servidor escribe la ID del server primero");
                         } else {
                             addon += entrada[1].length +1;
-                            message.guild.channels.get(entrada[1].slice(2,-1)).sendMessage(message.content.slice(addon));
+                            message.guild.channels.get(entrada[1].slice(2,-1)).send(message.content.slice(addon));
                         }
                     } else {
                         serloc = 0;
