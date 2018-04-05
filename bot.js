@@ -19,8 +19,49 @@ client.on('message', message => {
             message.channel.sendMessage('Its over 999!!!!');
         } else if (message.content.startsWith(prefix + 'testjson')){
             message.channel.send(autorole.memes.chats[0]);
-        } else if (message.content.startsWith(prefix + 'testsend')){
+        } else if (message.content.startsWith(prefix + 'testsend ')){
             let entrada = message.content.split(" ");
+            let serloc = 1;
+            let addon = entrada[0].length +1;
+            function escaneo(paw) {
+                if(!isNaN(entrada[1])){
+                    if(message.guild.members.has(entrada[1])){
+                        entrada[1] == "<@"+entrada[1]+">";
+                        addon -= 3;
+                    } else if(message.guild.members.has(entrada[1])){
+                        entrada[1] == "<#"+entrada[1]+">";
+                        addon -= 3;
+                    } else if(message.client.guilds.has(entrada[1])){
+                        if(!isNaN(entrada[2])){
+                            if(paw > 1){
+                                let serloc = 1 + paw;
+                            } else {
+                                let serloc = 2;
+                                escaneo(paw+1);
+                            }
+                        }
+                    }
+                }
+            }
+            escaneo(1);
+            switch(serloc) {
+                case 1:
+                    if(entrada[1].slice(0,2) == "<@"){
+                        console.log(message.guild.members.has(entrada[1].slice(2,-1)));
+                    } else if(entrada[1].slice(0,2) == "<#"){
+                        console.log(message.guild.channels.has(entrada[1].slice(2,-1)));
+                    } else {
+                        serloc = 0;
+                        message.channel.sendMessage(message.content.slice(addon));
+                    }
+                break;
+                case 2:
+                break;
+                default:
+            }
+            } else if (serloc == 1){
+                
+            } else if (serloc == 1){
             if(entrada[1].slice(0,2) == "<@"){
                 console.log(message.guild.members.has(entrada[1].slice(2,-1)));
             } else if(entrada[1].slice(0,2) == "<#"){
