@@ -48,7 +48,7 @@ client.on('message', message => {
                 case 1:
                     if(entrada[1].slice(0,2) == "<@"){
                         addon += entrada[1].length +1;
-                        if (!message.guild.members.has(entrada[1])){
+                        if (!message.guild.members.has(entrada[1].slice(2,-1))){
                             message.channel.sendMessage("Este usuario no se encuentra en el servidor");
                         } else if(message.guild.members.get(entrada[1].slice(2,-1)).dmChannel == null){
                             message.guild.members.get(entrada[1].slice(2,-1)).createDM().then(dmc => {
@@ -67,7 +67,7 @@ client.on('message', message => {
                         }
                     } else if(entrada[1].slice(0,2) == "<#"){
                         addon += entrada[1].length +1;
-                        if (!message.guild.channels.has(entrada[1])){
+                        if (!message.guild.channels.has(entrada[1].slice(2,-1))){
                             message.channel.sendMessage("Si quieres que escriba en otro servidor escribe la ID del server primero");
                         } else {
                             addon += entrada[1].length +1;
