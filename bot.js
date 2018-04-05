@@ -28,7 +28,7 @@ client.on('message', message => {
                     if(message.guild.members.has(entrada[1])){
                         entrada[1] == "<@"+entrada[1]+">";
                         addon -= 3;
-                    } else if(message.guild.members.has(entrada[1])){
+                    } else if(message.guild.channels.has(entrada[1])){
                         entrada[1] == "<#"+entrada[1]+">";
                         addon -= 3;
                     } else if(message.client.guilds.has(entrada[1])){
@@ -47,7 +47,9 @@ client.on('message', message => {
             switch(serloc) {
                 case 1:
                     if(entrada[1].slice(0,2) == "<@"){
-                        if(message.guild.members.get(entrada[1].slice(2,-1)).dmChannel == null){
+                        if (!message.guild.members.has(entrada[1])){
+                            message.channel.sendMessage("Este usuario no se encuentra en el servidor");
+                        } else if(message.guild.members.get(entrada[1].slice(2,-1)).dmChannel == null){
                             message.guild.members.get(entrada[1].slice(2,-1)).createDM().then(dmc => {
                                 dmc.send(message.content.slice(addon))
                                     .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
@@ -64,8 +66,12 @@ client.on('message', message => {
                                 });
                         }
                     } else if(entrada[1].slice(0,2) == "<#"){
-                        addon += entrada[1].length +1;
-                        message.guild.channels.get(entrada[1].slice(2,-1)).sendMessage(message.content.slice(addon));
+                        if (!message.guild.channels.has(entrada[1])){
+                            message.channel.sendMessage("Si quieres que escriba en otro servidor escribe la ID del server primero");
+                        } else {
+                            addon += entrada[1].length +1;
+                            message.guild.channels.get(entrada[1].slice(2,-1)).sendMessage(message.content.slice(addon));
+                        }
                     } else {
                         serloc = 0;
                         message.channel.sendMessage(message.content.slice(addon));
