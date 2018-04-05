@@ -47,12 +47,22 @@ client.on('message', message => {
             switch(serloc) {
                 case 1:
                     if(entrada[1].slice(0,2) == "<@"){
-                        addon += entrada[1].length +1;
-                        message.guild.members.get(entrada[1].slice(2,-1)).dmChannel.send(message.content.slice(addon))
-                            .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
-                            .catch(er => {
-                                message.channel.sendMessage("no puedo escribirle a este usuario");
+                        if(message.guild.members.get(entrada[1].slice(2,-1)).dmChannel == null){
+                            message.guild.members.get(entrada[1].slice(2,-1)).createDM().then(dmc => {
+                                dmc.send(message.content.slice(addon))
+                                    .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
+                                    .catch(er => {
+                                        message.channel.sendMessage("no puedo escribirle a este usuario");
+                                    });
                             });
+                        } else {
+                            addon += entrada[1].length +1;
+                            message.guild.members.get(entrada[1].slice(2,-1)).dmChannel.send(message.content.slice(addon))
+                                .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
+                                .catch(er => {
+                                    message.channel.sendMessage("no puedo escribirle a este usuario");
+                                });
+                        }
                     } else if(entrada[1].slice(0,2) == "<#"){
                         addon += entrada[1].length +1;
                         message.guild.channels.get(entrada[1].slice(2,-1)).sendMessage(message.content.slice(addon));
