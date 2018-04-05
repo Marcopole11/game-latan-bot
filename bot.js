@@ -47,34 +47,25 @@ client.on('message', message => {
             switch(serloc) {
                 case 1:
                     if(entrada[1].slice(0,2) == "<@"){
-                        console.log(message.guild.members.has(entrada[1].slice(2,-1)));
+                        addon += entrada[1].length +1;
+                        entrada[1].dmChannel.send(message.content.slice(addon))
+                            .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
+                            .catch(er => {
+                                message.channel.sendMessage("no puedo escribirle a este usuario");
+                            });
                     } else if(entrada[1].slice(0,2) == "<#"){
-                        console.log(message.guild.channels.has(entrada[1].slice(2,-1)));
+                        addon += entrada[1].length +1;
+                        entrada[1].sendMessage(message.content.slice(addon));
                     } else {
                         serloc = 0;
                         message.channel.sendMessage(message.content.slice(addon));
                     }
                 break;
                 case 2:
+                    message.channel.sendMessage("función de servidor aparte aún no implementada");
                 break;
                 default:
-            }
-            } else if (serloc == 1){
-                
-            } else if (serloc == 1){
-            if(entrada[1].slice(0,2) == "<@"){
-                console.log(message.guild.members.has(entrada[1].slice(2,-1)));
-            } else if(entrada[1].slice(0,2) == "<#"){
-                console.log(message.guild.channels.has(entrada[1].slice(2,-1)));
-            } else if(isNaN(entrada[1])){
-                console.log("ID no detectada");
-            } else {
-                if(isNaN(entrada[2])){
-                    console.log("En este servidor");
-                } else {
-                    console.log("en otro servidor");
-                }
-                
+                    message.channel.sendMessage("función multiservidor aún no implementada");
             }
         }
     } else if(message.channel.id == 429649915174453250){
