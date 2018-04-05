@@ -22,9 +22,9 @@ client.on('message', message => {
         } else if (message.content.startsWith(prefix + 'testsend')){
             let entrada = message.content.split(" ");
             if(entrada[1].slice(0,2) == "<@"){
-                console.log(message.guild.members.has(id));
+                console.log(message.guild.members.has(entrada[1].slice(2,-1)));
             } else if(entrada[1].slice(0,2) == "<#"){
-                console.log(message.guild.channels.has(id));
+                console.log(message.guild.channels.has(entrada[1].slice(2,-1)));
             } else if(isNaN(entrada[1])){
                 console.log("ID no detectada");
             } else {
