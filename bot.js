@@ -47,6 +47,7 @@ client.on('message', message => {
             switch(serloc) {
                 case 1:
                     if(entrada[1].slice(0,2) == "<@"){
+                        addon += entrada[1].length +1;
                         if (!message.guild.members.has(entrada[1])){
                             message.channel.sendMessage("Este usuario no se encuentra en el servidor");
                         } else if(message.guild.members.get(entrada[1].slice(2,-1)).dmChannel == null){
@@ -58,7 +59,6 @@ client.on('message', message => {
                                     });
                             });
                         } else {
-                            addon += entrada[1].length +1;
                             message.guild.members.get(entrada[1].slice(2,-1)).dmChannel.send(message.content.slice(addon))
                                 .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
                                 .catch(er => {
@@ -66,6 +66,7 @@ client.on('message', message => {
                                 });
                         }
                     } else if(entrada[1].slice(0,2) == "<#"){
+                        addon += entrada[1].length +1;
                         if (!message.guild.channels.has(entrada[1])){
                             message.channel.sendMessage("Si quieres que escriba en otro servidor escribe la ID del server primero");
                         } else {
