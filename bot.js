@@ -20,7 +20,21 @@ client.on('message', message => {
         } else if (message.content.startsWith(prefix + 'testjson')){
             message.channel.send(autorole.memes.chats[0]);
         } else if (message.content.startsWith(prefix + 'testsend')){
-            console.log(message.content);
+            let entrada = message.content.split(" ");
+            if(entrada[1].slice(0,2) == "<@"){
+                console.log(message.guild.members.has(id));
+            } else if(entrada[1].slice(0,2) == "<#"){
+                console.log(message.guild.channels.has(id));
+            } else if(isNaN(entrada[1])){
+                console.log("ID no detectada");
+            } else {
+                if(isNaN(entrada[2])){
+                    console.log("En este servidor");
+                } else {
+                    console.log("en otro servidor");
+                }
+                
+            }
         }
     } else if(message.channel.id == 429649915174453250){
         if (message.content.startsWith('nueva')) {
