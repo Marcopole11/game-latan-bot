@@ -19,6 +19,8 @@ client.on('message', message => {
             message.channel.sendMessage('Its over 999!!!!');
         } else if (message.content.startsWith(prefix + 'testjson')){
             message.channel.send(autorole.memes.chats[0]);
+        } else if (message.content.startsWith(prefix + 'testsend')){
+            console.log(message.content);
         }
     } else if(message.channel.id == 429649915174453250){
         if (message.content.startsWith('nueva')) {
