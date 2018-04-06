@@ -39,6 +39,8 @@ client.on('message', message => {
                                 let serloc = 2;
                                 escaneo(paw+1);
                             }
+                        } else if (serloc == 1) {
+                            let serloc = 2;
                         }
                     }
                 }
