@@ -32,15 +32,11 @@ client.on('message', message => {
                         entrada[paw] = "<#"+entrada[1]+">";
                         addon -= 3;
                     } else if(message.client.guilds.has(entrada[paw])){
-                        if(!isNaN(entrada[paw+1])){
-                            if(paw > 1){
+                        if(entrada.length > paw){
                                 let serloc = 1 + paw;
-                            } else {
-                                let serloc = 2;
                                 escaneo(paw+1);
-                            }
-                        } else if (serloc == 1) {
-                            let serloc = 2;
+                        } else {
+                            console.log(entrada.length);
                         }
                     }
                 }
