@@ -25,14 +25,14 @@ client.on('message', message => {
             let addon = entrada[0].length +1;
             function escaneo(paw) {
                 if(!isNaN(entrada[1])){
-                    if(message.guild.members.has(entrada[1])){
-                        entrada[1] == "<@"+entrada[1]+">";
+                    if(message.guild.members.has(entrada[paw])){
+                        entrada[paw] = "<@"+entrada[1]+">";
                         addon -= 3;
-                    } else if(message.guild.channels.has(entrada[1])){
-                        entrada[1] == "<#"+entrada[1]+">";
+                    } else if(message.guild.channels.has(entrada[paw])){
+                        entrada[paw] = "<#"+entrada[1]+">";
                         addon -= 3;
-                    } else if(message.client.guilds.has(entrada[1])){
-                        if(!isNaN(entrada[2])){
+                    } else if(message.client.guilds.has(entrada[paw])){
+                        if(!isNaN(entrada[paw+1])){
                             if(paw > 1){
                                 let serloc = 1 + paw;
                             } else {
