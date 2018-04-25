@@ -14,7 +14,7 @@ client.on('message', message => {
     'Si! adelante',
     'no paso',
     'me da igual'];
-            message.author.dmChannel.send({
+            message.channel.send({
                   files: ['http://m.memegen.com/p9l8o1.jpg']
                 });
             message.channel.send(adapt.ping[Math.round(Math.random() * (adapt.ping -1))]);
