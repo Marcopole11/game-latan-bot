@@ -8,13 +8,7 @@ const autorole = require("./autoroles.json");
 
 var prefix = 'mL+';
 client.on('message', message => {
-    if(message.channel.id == 429629491598589983){
-        message.guild.channels.get("429650257723392011").sendMessage('**Petición de '
-                + message.member.nickname + '('
-                + message.author.tag + ' ' + message.author.id +') \n'+
-            message.content);
-        message.delete();
-    } else if(message.channel.id == 429624999683424261){
+    if(message.channel.id == 429624999683424261){
         if (message.content.startsWith(prefix + 'ping')) {
             message.channel.sendMessage('Its over 999!!!!');
         } else if (message.content.startsWith(prefix + 'testjson')){
