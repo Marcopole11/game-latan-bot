@@ -20,10 +20,12 @@ client.on('message', message => {
     } else if(message.channel.id == adapt.ultracomchat || message.member.roles.exists('name', adapt.ultrausers)){ //comandos de mods
         
     } else if(message.member.id == 192007091169263616){ //comandos de desarollador
+         message.channel.send("yep");
         if (message.content.startsWith(prefix + 'purge')) {
             message.channel.fetchMessages({ limit: 10 })
             .then(messages => {message.channel.bulkDelete(messages);});
         } else if (message.content.startsWith(prefix + '2purge')) {
+             message.channel.send("yep");
             msg.channel.bulkDelete(10).catch(console.error);
         }
     }
