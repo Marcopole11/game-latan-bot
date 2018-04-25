@@ -10,12 +10,10 @@ var prefix = 'e-';
 client.on('message', message => {
     if(message.channel.id == 429624999683424261){
         if (message.content.startsWith(prefix + 'ping')) {
-            const respuesta = [
-    'Si! adelante',
-    'no paso',
-    'me da igual'];
+            let test = adapt.ping[Math.round(Math.random() * (adapt.ping -1))];
+            message.channel.send(test);
             message.channel.send({
-                  files: [adapt.ping[Math.round(Math.random() * (adapt.ping -1))]]
+                  files: [test]
                 });
         }
     }
