@@ -11,8 +11,6 @@ client.on('message', message => {
     if(message.channel.id == 429624999683424261){
         if (message.content.startsWith(prefix + 'ping')) {
             let test = adapt.ping[Math.round(Math.random() * (adapt.ping.length -1))];
-            message.channel.send(adapt.ping.length);
-            message.channel.send(test);
             message.channel.send({
                   files: [test]
                 });
