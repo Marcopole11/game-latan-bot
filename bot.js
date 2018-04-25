@@ -15,7 +15,7 @@ client.on('message', message => {
                   files: [test]
                 });
         }
-    } else if(message.member.roles.exists('name', adapt.ultrauser)){
+    } else if(message.member.roles.exists('name', adapt.ultrausers)){
         message.channel.send("you have power!");
     }
 });
