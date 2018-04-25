@@ -15,10 +15,8 @@ client.on('message', message => {
     'no paso',
     'me da igual'];
             message.channel.send({
-                  files: ['http://m.memegen.com/p9l8o1.jpg']
+                  files: [adapt.ping[Math.round(Math.random() * (adapt.ping -1))]]
                 });
-            message.channel.send(adapt.ping[Math.round(Math.random() * (adapt.ping -1))]);
-            message.channel.sendMessage('Its over 999!!!!');
         }
     }
 });
