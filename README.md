@@ -1,2 +1,2 @@
-# Meme_Lord
-El Wae de tu meme
+# Bot oficial de Egamer Latan
+Administro el mejor servidor de torneos que conoces.
