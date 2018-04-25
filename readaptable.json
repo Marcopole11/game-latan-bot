@@ -1,10 +1,11 @@
 { "logchat" : "429692791879368704",
-  "dbchat" : "429649915174453250",
-  "memes" : {
-    "rango" : [ "n00bs","starter","droper","Kappa"],
-    "chats" : [ "429614627815686144","429615665951801354","429615823364161546","429620752212426753"],
-    "timestamp" : "430639374657519616",
-    "chance" : "7"
-  },
-  "delUnlog" :[ "429629491598589983","429649915174453250" ]
+  "comchat" : "429624999683424261",
+  "ultracomchat" : "429628889287884800",
+  "ultrausers" : "Admins",
+  "ping" : [
+    "https://orig00.deviantart.net/cfdd/f/2011/247/4/a/it__s_over_9000_by_hellknight10-d256p79.jpg",
+    "http://i0.kym-cdn.com/photos/images/original/000/900/001/6b3.png",
+    "https://img.memecdn.com/its-over-9000_o_625899.jpg",
+    "http://i0.kym-cdn.com/photos/images/original/000/000/355/9000cat.jpg"
+  ]
 }
