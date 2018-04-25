@@ -4,7 +4,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
     console.log('I am ready!');
 });
-const autorole = require("./autoroles.json");
+const autorole = require("./readaptable.json");
 
 var prefix = 'mL+';
 client.on('message', message => {
