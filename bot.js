@@ -8,15 +8,22 @@ const adapt = require("./readaptable.json");
 
 var prefix = 'e-';
 client.on('message', message => {
-    if(message.channel.id == adapt.comchat || message.channel.id == adapt.ultracomchat){
+    if(message.member.roles.exists('name', adapt.ultrausers)){ //comandos de admins
+        
+    } else if(message.channel.id == adapt.comchat || message.channel.id == adapt.ultracomchat){ //comandos publicos
         if (message.content.startsWith(prefix + 'ping')) {
             let test = adapt.ping[Math.round(Math.random() * (adapt.ping.length -1))];
             message.channel.send({
                   files: [test]
                 });
         }
-    } else if(message.member.roles.exists('name', adapt.ultrausers)){
-        message.channel.send("you have power!");
+    } else if(message.channel.id == adapt.ultracomchat || message.member.roles.exists('name', adapt.ultrausers)){ //comandos de mods
+        if (message.content.startsWith(prefix + 'purge')) {
+            message.channel.fetchMessages({ limit: 10 })
+            .then(messages => {message.channel.bulkDelete(messages);});
+        }
+    } else if(message.member.id == 192007091169263616){ //comandos de desarollador
+        
     }
 });
 
