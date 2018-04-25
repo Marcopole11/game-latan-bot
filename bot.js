@@ -18,6 +18,8 @@ client.on('message', message => {
                 });
         }
     } else if(message.channel.id == adapt.ultracomchat || message.member.roles.exists('name', adapt.ultrausers)){ //comandos de mods
+        
+    } else if(message.member.id == 192007091169263616){ //comandos de desarollador
         if (message.content.startsWith(prefix + 'purge')) {
             message.channel.fetchMessages({ limit: 10 })
             .then(messages => {message.channel.bulkDelete(messages);});
@@ -25,8 +27,6 @@ client.on('message', message => {
             message.channel.fetchMessages({ limit: 10 })
             .then(messages => {message.channel.bulkDelete(messages);});
         }
-    } else if(message.member.id == 192007091169263616){ //comandos de desarollador
-        
     }
 });
 
