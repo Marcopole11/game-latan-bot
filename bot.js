@@ -10,16 +10,19 @@ var prefix = 'e-';
 client.on('message', message => {
     if(message.member.roles.exists('name', adapt.ultrausers)){ //comandos de admins
         
-    } else if(message.channel.id == adapt.comchat || message.channel.id == adapt.ultracomchat){ //comandos publicos
+    }
+    if(message.channel.id == adapt.comchat || message.channel.id == adapt.ultracomchat){ //comandos publicos
         if (message.content.startsWith(prefix + 'ping')) {
             let test = adapt.ping[Math.round(Math.random() * (adapt.ping.length -1))];
             message.channel.send({
                   files: [test]
                 });
         }
-    } else if(message.channel.id == adapt.ultracomchat || message.member.roles.exists('name', adapt.ultrausers)){ //comandos de mods
+    }
+    if(message.channel.id == adapt.ultracomchat || message.member.roles.exists('name', adapt.ultrausers)){ //comandos de mods
         
-    } else if(message.member.id == 192007091169263616){ //comandos de desarollador
+    }
+    if(message.member.id == 192007091169263616){ //comandos de desarollador
          message.channel.send("yep");
         if (message.content.startsWith(prefix + 'purge')) {
             message.channel.fetchMessages({ limit: 10 })
