@@ -8,13 +8,15 @@ const adapt = require("./readaptable.json");
 
 var prefix = 'e-';
 client.on('message', message => {
-    if(message.channel.id == 429624999683424261){
+    if(message.channel.id == adapt.comchat || message.channel.id == adapt.ultracomchat){
         if (message.content.startsWith(prefix + 'ping')) {
             let test = adapt.ping[Math.round(Math.random() * (adapt.ping.length -1))];
             message.channel.send({
                   files: [test]
                 });
         }
+    } else if(message.member.roles.exists('name', ultrauser){
+        message.channel.send("you have power!");
     }
 });
 
