@@ -17,7 +17,7 @@ client.on('message', message => {
             message.author.dmChannel.send({
                   files: ['http://m.memegen.com/p9l8o1.jpg']
                 });
-            message.channel.send(adapt.ping[Math.round(Math.random() * (adapt.ping -1))];
+            message.channel.send(adapt.ping[Math.round(Math.random() * (adapt.ping -1))]);
             message.channel.sendMessage('Its over 999!!!!');
         }
     }
