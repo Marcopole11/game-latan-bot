@@ -33,10 +33,14 @@ client.on('message', message => {
                     limite = entrada[1];
                 }
             } else {
-                limite = 10;
+                limite = 30;
             }
-                message.channel.fetchMessages({ limit: limite })
-                .then(messages => {message.channel.bulkDelete(messages);});
+            let d = new Date();
+            message.channel.fetchMessages({ limit: limite })
+            .then(messages => {
+                messages.filter(mis => mis.createdAt.getTime() > (d.getTime()-1209600000));
+                message.channel.bulkDelete(messages);
+            });
         } else if (message.content.startsWith(prefix + '2purge')) {
             message.channel.bulkDelete(10).catch(console.error);
         }
