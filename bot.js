@@ -23,12 +23,10 @@ client.on('message', message => {
         
     }
     if(message.member.id == 192007091169263616){ //comandos de desarollador
-         message.channel.send("yep");
         if (message.content.startsWith(prefix + 'purge')) {
             message.channel.fetchMessages({ limit: 10 })
             .then(messages => {message.channel.bulkDelete(messages);});
         } else if (message.content.startsWith(prefix + '2purge')) {
-             message.channel.send("yep");
             msg.channel.bulkDelete(10).catch(console.error);
         }
     }
