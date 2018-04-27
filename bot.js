@@ -27,7 +27,7 @@ client.on('message', message => {
             message.channel.fetchMessages({ limit: 10 })
             .then(messages => {message.channel.bulkDelete(messages);});
         } else if (message.content.startsWith(prefix + '2purge')) {
-            msg.channel.bulkDelete(10).catch(console.error);
+            message.channel.bulkDelete(10).catch(console.error);
         }
     }
 });
