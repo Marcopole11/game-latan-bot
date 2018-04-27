@@ -24,8 +24,19 @@ client.on('message', message => {
     }
     if(message.member.id == 192007091169263616){ //comandos de desarollador
         if (message.content.startsWith(prefix + 'purge')) {
-            message.channel.fetchMessages({ limit: 10 })
-            .then(messages => {message.channel.bulkDelete(messages);});
+            let limite = 0;
+            let entrada = message.content.split(" ");
+            if(message.content.startsWith(prefix + 'purge ') && message.content != prefix + 'purge '){
+                if(isNaN(limite)){
+                    message.channel.send(entrada[1]+" no es un número");
+                } else {
+                    limite = entrada[1];
+                }
+            } else {
+                limite = 10;
+            }
+                message.channel.fetchMessages({ limit: limite })
+                .then(messages => {message.channel.bulkDelete(messages);});
         } else if (message.content.startsWith(prefix + '2purge')) {
             message.channel.bulkDelete(10).catch(console.error);
         }
