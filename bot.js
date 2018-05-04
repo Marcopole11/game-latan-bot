@@ -43,6 +43,10 @@ client.on('message', message => {
             });
         } else if (message.content.startsWith(prefix + '2purge')) {
             message.channel.bulkDelete(10).catch(console.error);
+        } else if (message.content.startsWith(prefix + 'inforoles')) {
+            client.guild.roles.forEach(function(value, key) {
+                console.log(key + ' = ' + value);
+            });
         }
     }
 });
