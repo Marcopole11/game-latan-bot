@@ -45,7 +45,7 @@ client.on('message', message => {
             message.channel.bulkDelete(10).catch(console.error);
         } else if (message.content.startsWith(prefix + 'inforoles')) {
             message.guild.roles.forEach(function(value, key) {
-                console.log(key + ' = ' + value);
+                console.log(key + ' = ' + value.name);
             });
         }
     }
