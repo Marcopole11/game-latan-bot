@@ -49,7 +49,7 @@ client.on('message', message => {
             });
         } else if (message.content.startsWith(prefix + 'testsend')) {
             let ientrada = message.content.split("\n");
-            let entrada = ientrada[0].content.split(" ");
+            let entrada = ientrada[0].split(" ");
             let mesg = message.content.slice(entrada[0].length);
             if(message.guild.members.get(entrada[1].slice(2,-1)).dmChannel == null){
                 message.guild.members.get(entrada[1].slice(2,-1)).createDM().then(dmc => {
