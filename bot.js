@@ -47,6 +47,25 @@ client.on('message', message => {
             message.guild.roles.forEach(function(value, key) {
                 console.log(key + ' = ' + value.name);
             });
+        } else if (message.content.startsWith(prefix + 'testsend')) {
+            let ientrada = message.content.split("\n");
+            let entrada = entrada[0].content.split(" ");
+            let mesg = message.content.slice(entrada[0].length);
+            if(message.guild.members.get(entrada[1].slice(2,-1)).dmChannel == null){
+                message.guild.members.get(entrada[1].slice(2,-1)).createDM().then(dmc => {
+                    dmc.send(mesg)
+                        .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
+                        .catch(er => {
+                            message.channel.sendMessage("no puedo escribirle a este usuario");
+                        });
+                });
+            } else {
+                message.guild.members.get(entrada[1].slice(2,-1)).dmChannel.send(mesg)
+                    .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
+                    .catch(er => {
+                        message.channel.sendMessage("no puedo escribirle a este usuario");
+                    });
+            }
         }
     }
 });
