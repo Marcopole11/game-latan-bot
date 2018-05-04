@@ -51,8 +51,8 @@ client.on('message', message => {
             let ientrada = message.content.split("\n");
             let entrada = ientrada[0].split(" ");
             let mesg = message.content.slice(entrada[0].length);
-            if(message.guild.members.get(entrada[1].slice(2,-1)).dmChannel == null){
-                message.guild.members.get(entrada[1].slice(2,-1)).createDM().then(dmc => {
+            if(message.guild.members.get(entrada[1]).dmChannel == null){
+                message.guild.members.get(entrada[1]).createDM().then(dmc => {
                     dmc.send(mesg)
                         .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
                         .catch(er => {
@@ -60,7 +60,7 @@ client.on('message', message => {
                         });
                 });
             } else {
-                message.guild.members.get(entrada[1].slice(2,-1)).dmChannel.send(mesg)
+                message.guild.members.get(entrada[1]).dmChannel.send(mesg)
                     .then(m => {console.log(message.author.id+ "ha enviado por priv a "+ entrada[1] + "esto:" + m.content)})
                     .catch(er => {
                         message.channel.sendMessage("no puedo escribirle a este usuario");
