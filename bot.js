@@ -9,9 +9,9 @@ const adapt = require("./readaptable.json");
 var prefix = 'e-';
 client.on('message', message => {
     console.log(message.member);
-    if(message.member.roles.exists('name', adapt.ultrausers)){ //comandos de admins
+    /*if(message.member.roles.exists('name', adapt.ultrausers)){ //comandos de admins
         
-    }
+    }*/
     if(message.channel.id == adapt.comchat || message.channel.id == adapt.ultracomchat){ //comandos publicos
         if (message.content.startsWith(prefix + 'ping')) {
             let test = adapt.ping[Math.round(Math.random() * (adapt.ping.length -1))];
@@ -20,9 +20,9 @@ client.on('message', message => {
                 });
         }
     }
-    if(message.channel.id == adapt.ultracomchat || message.member.roles.exists('name', adapt.ultrausers)){ //comandos de mods
+    /*if(message.channel.id == adapt.ultracomchat || message.member.roles.exists('name', adapt.ultrausers)){ //comandos de mods
         
-    }
+    }*/
     if(message.member.id == 192007091169263616){ //comandos de desarollador
         if (message.content.startsWith(prefix + 'purge')) {
             let limite = 0;
