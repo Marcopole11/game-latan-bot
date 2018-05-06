@@ -8,6 +8,7 @@ const adapt = require("./readaptable.json");
 
 var prefix = 'e-';
 client.on('message', message => {
+    console.log(message.content);
     if(message.member.roles.exists('name', adapt.ultrausers)){ //comandos de admins
         
     }
